@@ -1,5 +1,5 @@
 import re
-
+import timeit
 
 def expression_match(text: str):
 
@@ -18,6 +18,12 @@ def expression_match(text: str):
         print("the didn't match to any expression")
     else:
         print(f"matched expressions:{matches}")
+        
+    for pattern_name, pattern in patterns:
+        setup_code = f"import re; pattern = re.compile({repr(pattern)})"
+        stmt = f"pattern.fullmatch({repr(text)})"
+        time_taken = timeit.timeit(stmt, setup=setup_code, number=100000)
+        print(f"Time taken for {pattern_name}: {time_taken:.6f} seconds")
     
     
 def main():
