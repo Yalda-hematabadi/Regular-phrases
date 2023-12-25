@@ -15,7 +15,7 @@ def expression_match(text: str):
             matches.append(pattern_name)
 
     if len(matches) == 0:
-        print("the didn't match to any expression")
+        print("text didn't match to any expression")
     else:
         print(f"matched expressions:{matches}")
         
